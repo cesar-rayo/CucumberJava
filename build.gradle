@@ -27,7 +27,7 @@ configurations {
 // $ ./gradlew cucumber
 cucumber {
     main = 'io.cucumber.core.cli.Main'
-    featurePath = 'src/test/java/linkedinlearning/cucumber/features/MenuManagement.feature'
+    featurePath = 'src/test/java/linkedinlearning/cucumber/features'
     glue = 'classpath:linkedinlearning/cucumber/stepdefinitions'
     plugin = ['pretty']
 }
