@@ -29,7 +29,12 @@ cucumber {
     main = 'io.cucumber.core.cli.Main'
     featurePath = 'src/test/java/linkedinlearning/cucumber/features'
     glue = 'classpath:linkedinlearning/cucumber/stepdefinitions'
-    plugin = ['pretty']
+    //glue = 'classpath:linkedinlearning/cucumber/hooks'
+    plugin = ['pretty',
+              "html:target/SystenTestReports/html/report.html",
+              "json:target/SystenTestReports/json/report.json",
+              "junit:target/SystenTestReports/junit/report.xml"
+    ]
 }
 
 

@@ -7,11 +7,20 @@ public class RestaurantMenu {
     List<RestaurantMenuItem> menu = new ArrayList<>();
 
     public void addMenuItem(RestaurantMenuItem item) {
-        menu.add(item);
+        if (doesItemExist(item)) {
+            throw new IllegalArgumentException("Duplicated Item!");
+        } else {
+            menu.add(item);
+        }
     }
 
-    public boolean contains(RestaurantMenu item) {
-        return menu.contains(item);
+    public boolean doesItemExist(RestaurantMenuItem newItem) {
+        for (RestaurantMenuItem item: menu) {
+            if (item.equals(newItem)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
