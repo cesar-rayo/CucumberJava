@@ -8,7 +8,8 @@ public class MenuManagementSteps {
     RestaurantMenu locationMenu = new RestaurantMenu();
     RestaurantMenuItem NewMenuItem;
 
-    @Given("I have a menu item with name {string} and price {int}")
+    // Using regex to make the char $ optional
+    @Given("I have a menu item with name {string} and price ([$]*){int}")
     public void i_have_a_menu_item_with_name_and_price(String newMenuItemName, Integer price) {
         NewMenuItem = new RestaurantMenuItem(newMenuItemName, newMenuItemName, price);
     }
