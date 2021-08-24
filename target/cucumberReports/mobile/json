@@ -1,0 +1,76 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-08-24T15:20:08.068Z",
+        "line": 3,
+        "name": "Add a menu item",
+        "description": "",
+        "id": "menu-management;add-a-menu-item",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 3367000,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I have a menu item with name \"Cucumber Sandwich\" and price 20",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Cucumber Sandwich\"",
+                  "offset": 29
+                },
+                {
+                  "val": "20",
+                  "offset": 59
+                }
+              ],
+              "location": "linkedinlearning.cucumber.stepdefinitions.MenuManagementSteps.i_have_a_menu_item_with_name_and_price(java.lang.String,java.lang.Integer)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 187000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I add that menu item",
+            "match": {
+              "location": "linkedinlearning.cucumber.stepdefinitions.MenuManagementSteps.i_add_that_menu_item()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 19258000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "Menu Item with name \"Cucumber Sandwich\" should be added",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Cucumber Sandwich\"",
+                  "offset": 20
+                }
+              ],
+              "location": "linkedinlearning.cucumber.stepdefinitions.MenuManagementSteps.menu_item_with_name_should_be_added(java.lang.String)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Menu Management",
+    "description": "",
+    "id": "menu-management",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/linkedinlearning/cucumber/features/MenuManagement.feature",
+    "tags": []
+  }
+]

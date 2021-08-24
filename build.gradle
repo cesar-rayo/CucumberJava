@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id "se.thinkcode.cucumber-runner" version "0.0.8"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'io.cucumber:cucumber-jvm:6.11.0'
+    testImplementation 'io.cucumber:cucumber-java:6.11.0'
+    implementation 'io.cucumber:cucumber-junit:6.11.0'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+// $ ./gradlew cucumber
+cucumber {
+    main = 'io.cucumber.core.cli.Main'
+    featurePath = 'src/test/java/linkedinlearning/cucumber/features/MenuManagement.feature'
+    glue = 'classpath:linkedinlearning/cucumber/stepdefinitions'
+    plugin = ['pretty']
+}
+
+
