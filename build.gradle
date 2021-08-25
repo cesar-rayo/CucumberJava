@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "se.thinkcode.cucumber-runner" version "0.0.8"
+    id "se.thinkcode.cucumber-runner" version "0.0.8" // Needed for running cucumber task
 }
 
 group 'org.example'
@@ -30,7 +30,6 @@ cucumber {
     main = 'io.cucumber.core.cli.Main'
     featurePath = 'src/test/java/linkedinlearning/cucumber/features'
     glue = 'classpath:linkedinlearning/cucumber/stepdefinitions'
-    //glue = 'classpath:linkedinlearning/cucumber/hooks'
     plugin = ['pretty',
               "html:target/SystemTestReports/html/report.html",
               "json:target/SystemTestReports/json/report.json",
