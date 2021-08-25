@@ -1,7 +1,6 @@
 package linkedinlearning.cucumber.stepdefinitions;
 
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
 import pages.FormPage;
 import pages.FormyHomePage;
 import pages.ThanksPage;

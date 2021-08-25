@@ -12,7 +12,7 @@ Feature: Final Bill Calculation
     |200              |8      |216                 |
     |100              |1.55   |101.55              |
 
-  @ScenarioOutlineExample @Selenium
+  @Selenium
   Scenario Outline: Selenium Example
     Given I am in the Formy Home Page
     And I go to the "Complete Web Form" page

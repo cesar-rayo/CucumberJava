@@ -61,6 +61,19 @@ public class MenuManagementTest {
 
 Notice this runner does not have an actual implementation, and that is expected.
 
+## Running Selenium Test Scenarios
+
+Start the selenium-grid
+
+```shell
+$ cd selenium_grid/
+$ sudo docker-compose up -d
+```
+
+From **Gradle cli** you can set the env-var `BROWSER` which points to the desired browser
+```shell
+$ ./gradlew cucumber --tags "@Selenium" -D BROWSER=opera
+```
 
 ## Gradle
 

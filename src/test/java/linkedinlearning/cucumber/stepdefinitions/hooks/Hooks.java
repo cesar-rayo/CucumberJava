@@ -1,8 +1,12 @@
-package linkedinlearning.cucumber.stepdefinitions;
+package linkedinlearning.cucumber.stepdefinitions.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.TestContext;
@@ -11,18 +15,31 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Hook extends TestContext {
+public class Hooks extends TestContext {
     private final TestContext testContext;
 
-    public Hook(TestContext testContext) {
+    public Hooks(TestContext testContext) {
         this.testContext = testContext;
     }
 
     @Before("@Selenium")
-    public void initializeDriver() {
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.operaBlink();
+    public void initializeDriver(Scenario sc) {
+        String driverFlavor = System.getProperty("BROWSER", "firefox");
         try {
-            testContext.driver = new RemoteWebDriver(new URL(testContext.gridUrl), desiredCapabilities);
+            switch (driverFlavor.toLowerCase()) {
+                case "firefox":
+                    testContext.driver = new RemoteWebDriver(new URL(testContext.gridUrl), new FirefoxOptions());
+                    break;
+                case "edge":
+                    testContext.driver = new RemoteWebDriver(new URL(testContext.gridUrl), new EdgeOptions());
+                    break;
+                case "opera":
+                    testContext.driver = new RemoteWebDriver(new URL(testContext.gridUrl), new OperaOptions());
+                    break;
+                default:
+                    testContext.driver = new RemoteWebDriver(new URL(testContext.gridUrl), new ChromeOptions());
+                    break;
+            }
             testContext.driver.manage().deleteAllCookies();
             testContext.driver.manage().window().maximize();
             testContext.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
