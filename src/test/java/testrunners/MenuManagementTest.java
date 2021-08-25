@@ -6,13 +6,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/java/linkedinlearning/cucumber/features/MenuManagement.feature"},
+        features = {"src/test/java/linkedinlearning/cucumber/features/"},
         glue = {"linkedinlearning/cucumber/stepdefinitions"},
         // logical operators: 'and', 'or', not
-        tags = "@MenuManagementTest",
+        tags = "@Selenium",
         plugin = {
                 "pretty",
-                "html:target/SystemTestReports/html",
+                "html:target/SystemTestReports/html/report.html",
                 "json:target/SystemTestReports/json/report.json",
                 "junit:target/SystemTestReports/junit/report.xml"
         }
