@@ -36,3 +36,8 @@ cucumber {
               "junit:target/SystemTestReports/junit/report.xml"
     ]
 }
+
+// Setting the properties for the test runners
+test{
+    systemProperty "BROWSER", "edge"
+}

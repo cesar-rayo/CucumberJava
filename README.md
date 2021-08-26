@@ -75,6 +75,13 @@ From **Gradle cli** you can set the env-var `BROWSER` which points to the desire
 $ ./gradlew cucumber --tags "@Selenium" -D BROWSER=opera
 ```
 
+Or from **Intellij** you can modify the `build.gradle` file by setting the browser property like this:
+
+```groovy
+test{
+    systemProperty "BROWSER", "opera"
+}
+```
 ## Configuring the Jenkins job
 
 Install jenkins (MacOS)
