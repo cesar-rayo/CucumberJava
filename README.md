@@ -75,6 +75,45 @@ From **Gradle cli** you can set the env-var `BROWSER` which points to the desire
 $ ./gradlew cucumber --tags "@Selenium" -D BROWSER=opera
 ```
 
+## Configuring the Jenkins job
+
+Install jenkins (MacOS)
+```shell
+$ brew install jenkins-lts
+$ brew services start jenkins-lts
+```
+Provide the master password
+```shell
+$ cat .jenkins/secrets/initialAdminPassword
+```
+### Required Plugins:
+* [Ansicolor](https://plugins.jenkins.io/ansicolor/): To show colors in console output
+  ![alt text](images/ansicolor_config.png)
+* [Cucumber reports](https://plugins.jenkins.io/cucumber-reports/): Which reads the json report and presents it in a nice way.
+  ![alt text](images/Cucumber_report_config.png)
+* [Html publisher](https://plugins.jenkins.io/htmlpublisher/): Publishes the Html report Cucumber creates.
+  ![alt text](images/Hmlt_report_config.png)
+**Note:** If necessary, do not forget to enable folders browsing in the node the job is going to run
+```
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+```
+### Job Definition:
+* Build Parameters:
+  * Choice Parameter **BROWSER**
+  * String Parameter **TAGS**
+* Build Steps
+```shell
+$ ./gradlew cucumber --tags "${TAGS}" -DBROWSER=${BROWSER}
+```
+
+### Jenkins Job
+Job created:
+![alt text](images/jenkins_job_1.png)
+
+Build with parameters:
+![alt text](images/jenkins_job_2.png)
+
+
 ## Gradle
 
 Initialize the project

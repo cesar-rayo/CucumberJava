@@ -25,5 +25,4 @@ public class FormyHomePage {
         clickOnLink("/form");
         return new FormPage(driver);
     }
-
 }
