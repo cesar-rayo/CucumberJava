@@ -108,10 +108,10 @@ $ ./gradlew cucumber --tags "${TAGS}" -DBROWSER=${BROWSER}
 
 ### Jenkins Job
 Job created:
-![alt text](images/jenkins_job_1.png)
+![alt text](images/Jenkins_job_1.png)
 
 Build with parameters:
-![alt text](images/jenkins_job_2.png)
+![alt text](images/Jenkins_job_2.png)
 
 
 ## Gradle
