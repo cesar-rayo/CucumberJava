@@ -1,5 +1,6 @@
 package linkedinlearning.cucumber.stepdefinitions.hooks;
 
+import com.applitools.eyes.selenium.Eyes;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -24,6 +25,7 @@ public class Hooks extends TestContext {
     @Before("@Selenium")
     public void initializeDriver(Scenario sc) {
         String driverFlavor = System.getProperty("BROWSER", "firefox");
+        initializeEyes();
         try {
             switch (driverFlavor.toLowerCase()) {
                 case "firefox":
@@ -45,6 +47,12 @@ public class Hooks extends TestContext {
         } catch (MalformedURLException e) {
             System.out.println("Invalid URL " + gridUrl);
         }
+    }
+
+    private void initializeEyes() {
+        testContext.eyes = new Eyes();
+        testContext.eyes.setApiKey(System.getProperty("applitools.api.key"));
+        System.out.println("Apikey length: "+System.getProperty("applitools.api.key").length());
     }
 
     @Before("@SmokeTest")

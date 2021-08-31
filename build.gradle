@@ -17,6 +17,9 @@ dependencies {
     testImplementation 'io.cucumber:cucumber-picocontainer:6.11.0' // Needed for work with hooks
     implementation 'io.cucumber:cucumber-junit:6.11.0'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+
+    // Visual Testing
+    implementation 'com.applitools:eyes-selenium-java3:3.208.0'
 }
 
 configurations {
