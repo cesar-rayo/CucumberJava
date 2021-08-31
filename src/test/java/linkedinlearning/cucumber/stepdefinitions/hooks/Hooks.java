@@ -73,5 +73,6 @@ public class Hooks extends TestContext {
     @After("@Selenium")
     public void closeDriver() {
         testContext.driver.quit();
+        testContext.eyes.abortIfNotClosed();
     }
 }

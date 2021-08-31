@@ -120,6 +120,34 @@ Job created:
 Build with parameters:
 ![alt text](images/Jenkins_job_2.png)
 
+## Visual Testing - Applitools Eyes
+
+For this project we have used [Applitools Eyes](https://applitools.com/) which is a cloud based service that allows us to analyze images using AI.
+
+All we have to do is create a free account and then set the api key as we do in the hooks (we use VM options to set the api key):
+
+```java
+import com.applitools.eyes.selenium.Eyes;
+
+Eyes eyes = new Eyes();
+eyes.setApiKey(System.getProperty("applitools.api.key"));
+```
+Having eyes ready for use, we can validate a specific webpage by using the following instructions:
+```java
+eyes.open(driver, appName, testName);
+eyes.checkWindow();
+eyes.close();
+```
+Where `open` method takes as arguments the `Webdriver driver` where the webpage is displayed and a custom appName and testName, so you can easily identify the results at the Applitools portal:
+
+![alt text](images/applitools_portal.png)
+
+### Eyes - Succeeded test
+![alt text](images/applitools_match.png)
+
+### Eyes - Failed test
+![alt text](images/applitools_unmatch.png)
+Also will throw an `com.applitools.eyes.exceptions.DiffsFoundException` exception indicating Eyes has found differences
 
 ## Gradle
 
