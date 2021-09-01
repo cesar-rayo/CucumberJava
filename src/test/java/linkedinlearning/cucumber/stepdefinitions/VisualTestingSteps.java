@@ -26,8 +26,13 @@ public class VisualTestingSteps extends TestContext {
 
     @When("I search for the title {string}")
     public void iSearchForTheTitle(String title) {
+        String methodName = new Object() {}
+                .getClass()
+                .getEnclosingMethod()
+                .getName();
+        
         bookHomePage.search(title);
-        eyesUtils.validateWindow(testContext.driver, "Books Store", "iSearchForTheTitle");
+        eyesUtils.validateWindow(testContext.driver, "Books Store", methodName);
         System.out.println("List of visible books: " + bookHomePage.countBooks());
         assertTrue(String.format("The title '%s' is not visible", title),bookHomePage.isBookVisible(title));
     }
