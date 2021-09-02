@@ -2,6 +2,7 @@ package utils;
 
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.selenium.Eyes;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class EyesUtils {
@@ -24,6 +25,20 @@ public class EyesUtils {
         eyes.open(driver,appName,testName);
         eyes.setMatchLevel(MatchLevel.LAYOUT); // default config
         eyes.checkWindow();
+        eyes.close();
+    }
+
+    public void validateLargeContent(WebDriver driver, String appName, String testName) {
+        eyes.open(driver,appName,testName);
+        eyes.setForceFullPageScreenshot(true); // take full screenshot
+        eyes.checkWindow();
+        eyes.close();
+    }
+
+    public void validateElement(WebDriver driver, By locator, String appName, String testName) {
+        eyes.open(driver,appName,testName);
+        eyes.checkElement(locator);
+        //eyes.checkFrame("frame-bottom");
         eyes.close();
     }
 }
