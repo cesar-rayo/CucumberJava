@@ -2,8 +2,10 @@ package linkedinlearning.cucumber.stepdefinitions;
 
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.BookHomePage;
+import pages.InternetHomePage;
 import utils.EyesUtils;
 import utils.TestContext;
 
@@ -26,14 +28,33 @@ public class VisualTestingSteps extends TestContext {
 
     @When("I search for the title {string}")
     public void iSearchForTheTitle(String title) {
+        bookHomePage.search(title);
+        System.out.println("List of visible books: " + bookHomePage.countBooks());
+    }
+
+    @Then("the book with title {string} is visible")
+    public void theBookWithTitleIsVisible(String title) {
         String methodName = new Object() {}
                 .getClass()
                 .getEnclosingMethod()
                 .getName();
-        
-        bookHomePage.search(title);
         eyesUtils.validateWindow(testContext.driver, "Books Store", methodName);
-        System.out.println("List of visible books: " + bookHomePage.countBooks());
         assertTrue(String.format("The title '%s' is not visible", title),bookHomePage.isBookVisible(title));
+    }
+
+    @Given("I am in the dynamic content from the-internet")
+    public void iAmInTheDynamicContentFromTheInternet() {
+        InternetHomePage internetHomePage = new InternetHomePage(testContext.driver);
+        eyesUtils = new EyesUtils(testContext.eyes);
+    }
+
+    @Then("the dynamic content loads")
+    public void theDynamicContentLoads() {
+        // Validate dynamic content
+        String methodName = new Object() {}
+                .getClass()
+                .getEnclosingMethod()
+                .getName();
+        eyesUtils.validateDynamicContent(testContext.driver, "The Internet", methodName);
     }
 }
